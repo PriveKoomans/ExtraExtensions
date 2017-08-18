@@ -4,6 +4,8 @@
     using System.Drawing;
     using System.Net.Http;
     using System.Net;
+    using System.Text;
+    using Newtonsoft.Json;
 
     public static class Extensions
     {
@@ -41,6 +43,11 @@
             return string.Format(sizeTemplate, Math.Round((double)size, decimals));
         }
 
+        public static TimeSpan ToTimeSpan(this long ticks)
+        {
+            return TimeSpan.FromTicks(ticks);
+        }
+
         public static string GetSource(this string url)
         {
             if (!url.Contains("http://") || !url.Contains("https://") || !url.Contains("ftp://") || !url.Contains("ftps://"))
@@ -59,6 +66,26 @@
                     return null;
                 }
             }
+        }
+
+        public static byte[] ToByteArray(this string text)
+        {
+            return Encoding.UTF32.GetBytes(text);
+        }
+
+        public static string ToString(this byte[] bytes)
+        {
+            return Encoding.UTF32.GetString(bytes);
+        }
+
+        public static string SerializeJson(this object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
+        }
+
+        public static object DeserializeJson<T>(this string json)
+        {
+            return JsonConvert.DeserializeObject<T>(json);
         }
     }
 }
