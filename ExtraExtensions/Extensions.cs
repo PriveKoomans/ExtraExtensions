@@ -110,7 +110,7 @@
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static string SerializeJson(this object obj)
+        public static string Serialize(this object obj)
         {
             return JsonConvert.SerializeObject(obj);
         }
@@ -121,7 +121,7 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="json"></param>
         /// <returns></returns>
-        public static object DeserializeJson<T>(this string json)
+        public static object Deserialize<T>(this string json)
         {
             return JsonConvert.DeserializeObject<T>(json);
         }
