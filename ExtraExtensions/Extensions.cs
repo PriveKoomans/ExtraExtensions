@@ -9,6 +9,11 @@
 
     public static class Extensions
     {
+       
+        /// <summary>
+        /// Function to invert colors in the given bitmap
+        /// </summary>
+        /// <param name="bitmap"></param>
         public static void Invert(this Bitmap bitmap)
         {
             byte A, R, G, B;
@@ -28,6 +33,12 @@
             }
         }
 
+        /// <summary>
+        /// Function to convert byte size to readable string
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="decimals"></param>
+        /// <returns></returns>
         public static string ToReadableString(this long size, int decimals)
         {
             string[] sizeSuffixes = { "B", "KB", "MB", "GB", "TB", "PB", "EB" };
@@ -43,11 +54,21 @@
             return string.Format(sizeTemplate, Math.Round((double)size, decimals));
         }
 
+        /// <summary>
+        /// Function to initialize timespan class from given ticks
+        /// </summary>
+        /// <param name="ticks"></param>
+        /// <returns></returns>
         public static TimeSpan ToTimeSpan(this long ticks)
         {
             return TimeSpan.FromTicks(ticks);
         }
 
+        /// <summary>
+        /// Function to get webpage source
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public static string GetSource(this string url)
         {
             if (!url.Contains("http://") || !url.Contains("https://") || !url.Contains("ftp://") || !url.Contains("ftps://"))
@@ -64,21 +85,42 @@
             }
         }
 
+        /// <summary>
+        /// Function to convert string to byte array
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public static byte[] ToByteArray(this string text)
         {
             return Encoding.UTF32.GetBytes(text);
         }
 
+        /// <summary>
+        /// Function to convert byte array to string
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
         public static string ToString(this byte[] bytes)
         {
             return Encoding.UTF32.GetString(bytes);
         }
 
+        /// <summary>
+        /// Function to serialize object to json
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static string SerializeJson(this object obj)
         {
             return JsonConvert.SerializeObject(obj);
         }
 
+        /// <summary>
+        /// Function to deserialize json string to object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public static object DeserializeJson<T>(this string json)
         {
             return JsonConvert.DeserializeObject<T>(json);
