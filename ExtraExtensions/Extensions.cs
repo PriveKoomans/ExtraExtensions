@@ -58,13 +58,9 @@
                 var response = client.GetAsync(url);
 
                 if (response.Result.StatusCode == HttpStatusCode.OK)
-                {
                     return response.Result.Content.ReadAsStringAsync().Result;
-                }
                 else
-                {
                     return null;
-                }
             }
         }
 
